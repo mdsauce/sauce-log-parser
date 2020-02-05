@@ -113,5 +113,5 @@ def test_404_on_missing_asset():
         log_collector.get_log(api_endpoint='https://saucelabs.com/rest/v1',
                               admin=admin_username,
                               access_key=admin_key,
-                              username='john.q.i.dont.exist',
+                              owner='john.q.i.dont.exist',
                               job_id='1234')
