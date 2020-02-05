@@ -12,33 +12,6 @@ This can help determine if a "slow" test is because of Selenium commands/server 
 
 This is because the log.json file (which is used by this script) only takes into account test time but does not take into account start up and processing time.
 
-```
-python sel_log_parser.py -h
-usage: sel_log_parser.py [-h] [-a ADMIN] [-k ACCESS_KEY] [-u USER] [-s]
-                         [-r REGION] [-v] [--csv]
-                         job_id [job_id ...]
-
-positional arguments:
-  job_id                Sauce Labs Session ID to be examined.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -a ADMIN, --admin ADMIN
-                        Sauce Admin username. For Saucers only.
-  -k ACCESS_KEY, --access_key ACCESS_KEY
-                        Sauce Admin access key. For Saucers only.
-  -u USER, --user USER  Sauce username. Account Username of the Test Owner
-                        that ran the session.
-  -s, --save            Save the output as a .log file in cwd. Schema is
-                        log_session-id.log.
-  -r REGION, --region REGION
-                        Sauce region where test was performed(us-west-1, us-
-                        east-1, eu-central-1)
-  -v, --verbose         Verbose flag to print at debug level
-  --csv                 Save the output of all tests as csv in cwd. Schema is
-                        date_job-ids.csv
-```
-
 ## Usage
 Run against one session!
 

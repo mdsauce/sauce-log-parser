@@ -86,10 +86,10 @@ def main(arguments=None):
     arg_parser.add_argument("-a", "--admin",
                             help="Sauce Admin username.  For Saucers only.")
     arg_parser.add_argument("-k", "--access_key",
-                            help="Sauce Admin access key.  For Saucers only.")
+                            help="Sauce access key.")
     arg_parser.add_argument("-u", "--user",
-                            help="Sauce username.  Account Username of the"
-                            " Test Owner that ran the session.")
+                            help="Account Username of"
+                            " the user that ran the Sauce job.")
     arg_parser.add_argument("-s", "--save",
                             help="Save the output as a .log file in cwd. "
                             "Schema is log_session-id.log.",

@@ -2,7 +2,7 @@
 import requests
 
 
-URL_BASE = "{api_endpoint}/{username}/jobs/{job_id}/assets/log.json"
+URL_BASE = "{api_endpoint}/{owner}/jobs/{job_id}/assets/log.json"
 
 
 class AssetsNotFound(Exception):
@@ -15,10 +15,10 @@ class SomethingWentWrong(Exception):
     pass
 
 
-def get_log(api_endpoint, admin, access_key, username, job_id, write=False):
+def get_log(api_endpoint, admin, access_key, owner, job_id, write=False):
     "Obtain log with username and job_id"
 
-    url = URL_BASE.format(api_endpoint=api_endpoint, username=username,
+    url = URL_BASE.format(api_endpoint=api_endpoint, owner=owner,
                           job_id=job_id)
     log_name = "log_{}.log".format(job_id)
     resp = requests.get(url, auth=(admin, access_key))
