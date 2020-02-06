@@ -18,10 +18,10 @@ class Build():
     URL_BASE = "{api_endpoint}/builds/{build_id}"
     URL_JOBS = URL_BASE + "/jobs"
 
-    def __init__(self, api_endpoint, username, build_id):
+    def __init__(self, api_endpoint, owner, build_id):
         self.api_endpoint = api_endpoint
         self.build_id = build_id
-        self.username = username
+        self.owner = owner
         self.job_list = []
         # should run get_job_ids on object creation
 

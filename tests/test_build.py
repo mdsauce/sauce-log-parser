@@ -3,10 +3,10 @@ import tests.constants as consts
 
 
 def test_get_username():
-    username = 'my_username'
-    build = b.Build('https://myendpoint.com', username, 'build_id')
+    owner_username = 'my_username'
+    build = b.Build('https://myendpoint.com', owner_username, 'build_id')
 
-    assert build.username == username
+    assert build.owner == owner_username
 
 
 def test_get_endpoint():
