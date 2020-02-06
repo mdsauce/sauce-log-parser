@@ -24,12 +24,6 @@ class Build():
         self.username = username
         self.job_list = []
 
-    def get_build_id(self):
-        return self.build_id
-
-    def get_job_list(self):
-        return self.job_list
-
     def get_job_ids(self, admin, access_key):
         url = self.URL_JOBS.format(api_endpoint=self.api_endpoint,
                                    build_id=self.build_id)
@@ -53,6 +47,5 @@ class Build():
         for job_id in self.job_list:
             job = sauce_job.Job(self.api_endpoint, self.username, job_id)
             job.fetch_json_log(admin, access_key, write)
-
             jobs.append(job)
         return jobs
