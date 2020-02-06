@@ -23,8 +23,11 @@ class Build():
         self.build_id = build_id
         self.username = username
         self.job_list = []
+        # should run get_job_ids on object creation
 
     def get_job_ids(self, admin, access_key):
+        """Use supplied credentials to collect the list of Job Ids
+        for all jobs in the build."""
         url = self.URL_JOBS.format(api_endpoint=self.api_endpoint,
                                    build_id=self.build_id)
 
@@ -38,11 +41,11 @@ class Build():
             raise SomethingWentWrong
 
         json_resp = resp.json()
-        tmp_job_list = json_resp['jobs']
-
-        self.job_list = [job['id'] for job in tmp_job_list]
+        self.job_list = [job['id'] for job in json_resp['jobs']]
 
     def build_jobs(self, admin, access_key, write):
+        """Use the current Job Ids for Build's Jobs to
+        create a list of Job objects"""
         jobs = []
         for job_id in self.job_list:
             job = sauce_job.Job(self.api_endpoint, self.username, job_id)
