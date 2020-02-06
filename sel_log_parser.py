@@ -14,10 +14,8 @@ import datetime
 import utils
 import constants
 
-# duplicate?
 
-
-def standalone_read_log(log_name, command):
+def standalone_read_log(log_name, command):  # duplicate?
     """Reads in a log and returns a list of all the command values"""
     commands = []
     with open(log_name, 'r') as log:
@@ -40,10 +38,8 @@ def standalone_read_log(log_name, command):
     else:
         print("There is no commands to be parsed")
 
-# duplicate?
 
-
-def standalone_generate_results(job_id):
+def standalone_generate_results(job_id):  # duplicate?
     """Parses job id from log name"""
     files = glob.glob('log_{}.*'.format(job_id))
     log_name = files[0]
