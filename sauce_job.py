@@ -17,7 +17,8 @@ class Job(object):
         self.job_id = job_id
 
     def fetch_json_log(self, admin, access_key, write):
-        """Tries to download log.json """
+        """Tries to download log.json and add the deserialized json
+        to the Job instance"""
         try:
             response = log_collector.get_log(self.api_endpoint, admin,
                                              access_key, self.owner,
@@ -56,7 +57,6 @@ class Job(object):
             results["max"] = max(commands)
             results["min"] = min(commands)
             results["total"] = Job.total(commands)
-
         return results
 
     @staticmethod
