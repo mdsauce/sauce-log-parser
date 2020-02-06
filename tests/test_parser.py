@@ -37,12 +37,12 @@ def test_read_log_success(tmpdir, capsys):
     test_log = tmpdir.join("log_test.log")
     test_log.write(SUCESSFUL_TEST_LOG)
 
-    sauce_parser.read_log("{}/log_test.log".format(test_log.dirname),
+    sauce_parser.standalone_read_log("{}/log_test.log".format(test_log.dirname),
                           "duration")
     out, error = capsys.readouterr()
     assert EXPECTED_OUTPUT_DURATION == out
 
-    sauce_parser.read_log("{}/log_test.log".format(test_log.dirname),
+    sauce_parser.standalone_read_log("{}/log_test.log".format(test_log.dirname),
                           "between_commands")
     out, error = capsys.readouterr()
     assert EXPECTED_OUTPUT_BETWEEN == out
@@ -59,12 +59,12 @@ def test_read_log_no_between_commands(tmpdir, capsys):
     test_log = tmpdir.join("log_test.log")
     test_log.write(NO_BETWEEN_COMMANDS_LOG)
 
-    sauce_parser.read_log("{}/log_test.log".format(test_log.dirname),
+    sauce_parser.standalone_read_log("{}/log_test.log".format(test_log.dirname),
                           "duration")
     out, error = capsys.readouterr()
     assert EXPECTED_OUTPUT_DURATION == out
 
-    sauce_parser.read_log("{}/log_test.log".format(test_log.dirname),
+    sauce_parser.standalone_read_log("{}/log_test.log".format(test_log.dirname),
                           "between_commands")
     out, error = capsys.readouterr()
     assert EXPECTED_OUTPUT_BETWEEN == out
@@ -78,12 +78,12 @@ def test_read_log_empty(tmpdir, capsys):
     test_log = tmpdir.join("log_test.log")
     test_log.write(EMPTY_LOG)
 
-    sauce_parser.read_log("{}/log_test.log".format(test_log.dirname),
+    sauce_parser.standalone_read_log("{}/log_test.log".format(test_log.dirname),
                           "duration")
     out, error = capsys.readouterr()
     assert EXPECTED_OUTPUT_DURATION == out
 
-    sauce_parser.read_log("{}/log_test.log".format(test_log.dirname),
+    sauce_parser.standalone_read_log("{}/log_test.log".format(test_log.dirname),
                           "between_commands")
     out, error = capsys.readouterr()
     assert EXPECTED_OUTPUT_BETWEEN == out
