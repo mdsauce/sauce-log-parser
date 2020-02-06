@@ -16,8 +16,8 @@ class Job(object):
         self.owner = owner
         self.job_id = job_id
 
-    def parse_json_log(self, admin, access_key, write):
-        """Downloads log"""
+    def fetch_json_log(self, admin, access_key, write):
+        """Tries to download log.json """
         try:
             response = log_collector.get_log(self.api_endpoint, admin,
                                              access_key, self.owner,
