@@ -8,7 +8,7 @@ class Job(object):
 
     duration = {}
     between_commands = {}
-    data = None
+    commands_json = None
 
     def __init__(self, api_endpoint, owner, job_id):
         super(Job, self).__init__()
@@ -30,25 +30,25 @@ class Job(object):
             print("Something went wrong. Try running with '-v'")
             return
         if response:
-            self.data = json.loads(response)
+            self.commands_json = json.loads(response)
 
-    def read_data(self, command):
-        """Reads data and returns max, min, mean and total"""
+    def parse_commands(self, timing_value):
+        """Reads commands_json and returns max, min, mean and total"""
         commands = []
         results = {}
-        if self.data is None:
+        if self.commands_json is None:
             results["mean"] = "n/a"
             results["max"] = "n/a"
             results["min"] = "n/a"
             results["total"] = "n/a"
             return results
 
-        for log in self.data:
+        for log in self.commands_json:
             # If "status" is present, a javascript title was sent
             if "status" in log:
                 pass
             else:
-                curr_command = log[command]
+                curr_command = log[timing_value]
                 if curr_command is not None:
                     commands.append(curr_command)
         if commands:  # Check if there's actual commands to process
@@ -70,13 +70,13 @@ class Job(object):
         else:
             print("There is no commands to be parsed")
 
-    def examine_job(self):
-        """Gets information from data"""
-        if self.data is None:
+    def generate_results(self):
+        """Gets information from commands_json"""
+        if self.commands_json is None:
             print("Could not download job id", self.job_id)
             return
-        self.duration = self.read_data("duration")
-        self.between_commands = self.read_data("between_commands")
+        self.duration = self.parse_commands("duration")
+        self.between_commands = self.parse_commands("between_commands")
 
         print("---")
         print("test_id: {}".format(self.job_id))

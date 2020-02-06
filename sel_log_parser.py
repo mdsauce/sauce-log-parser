@@ -39,7 +39,7 @@ def read_log(log_name, command):
         print("There is no commands to be parsed")
 
 
-def examine_job(job_id):
+def generate_results(job_id):
     """Parses job id from log name"""
     files = glob.glob('log_{}.*'.format(job_id))
     log_name = files[0]
@@ -138,7 +138,7 @@ def main(arguments=None):
 
     csv_raw_data = []
     for job in job_instances:
-        job.examine_job()
+        job.generate_results()
 
         if args.csv:
             duration = utils.rename_command_dict("duration",
