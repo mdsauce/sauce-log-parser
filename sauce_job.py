@@ -16,7 +16,7 @@ class Job(object):
         self.owner = owner
         self.job_id = job_id
 
-    def parse_job_json(self, admin, access_key, write):
+    def parse_json_log(self, admin, access_key, write):
         """Downloads log"""
         try:
             response = log_collector.get_log(self.api_endpoint, admin,
@@ -33,7 +33,7 @@ class Job(object):
             self.commands_json = json.loads(response)
 
     def parse_commands(self, timing_value):
-        """Reads commands_json and returns max, min, mean and total"""
+        """Reads in commands_json and calculates max, min, mean and total"""
         commands = []
         results = {}
         if self.commands_json is None:
@@ -71,7 +71,9 @@ class Job(object):
             print("There is no commands to be parsed")
 
     def generate_results(self):
-        """Gets information from commands_json"""
+        """Creates results dicts from commands_json and
+        then outputs the results to the user.
+        """
         if self.commands_json is None:
             print("Could not download job id", self.job_id)
             return

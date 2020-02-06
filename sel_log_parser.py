@@ -65,7 +65,7 @@ def build_job(job,
               api_endpoint,
               args):
     job_instance = sauce_job.Job(api_endpoint, args.user, job)
-    job_instance.parse_job_json(args.admin, args.access_key, args.save)
+    job_instance.parse_json_log(args.admin, args.access_key, args.save)
 
     return job_instance
 
