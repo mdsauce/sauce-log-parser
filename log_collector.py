@@ -16,7 +16,8 @@ class SomethingWentWrong(Exception):
 
 
 def get_log(api_endpoint, admin, access_key, owner, job_id, write=False):
-    "Obtain log with username and job_id"
+    """Download log.json for a single job with the
+    supplied credentials and job_id"""
 
     url = URL_BASE.format(api_endpoint=api_endpoint, owner=owner,
                           job_id=job_id)
